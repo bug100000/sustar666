@@ -22,7 +22,7 @@ let userShema = Schema({
   questiondate: {type: Date},
   praise: {type: Number},
   code: {type: String},
-  lastdate: {type: Date},
+  lastdate: {type: Date}
 });
 
 module.exports.qdb = mongoose.model('questions', userShema);

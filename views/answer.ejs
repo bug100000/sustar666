@@ -25,13 +25,13 @@
             <p class="answer-shoucang">
               <button class="answer-shoucang-btn" type="button" name="button">收藏</button>
             </p>
-            <h2><span class = "wen">问</span> node.js (插入title)</h2>
+            <h2><span class = "wen">问</span><%= data.title %></h2>
             <div class = "answer-content">
-              <p>闭包怎么使用(插入问题内容)</p>
+              <p class="answer-code"></p>
             </div>
             <div class="answer-biaoqian">
               关键字:<span class="answer-biaoqian-span">
-                <a class = "answer-biaoqian-a" href="#">(插题tag)</a>
+                <a class = "answer-biaoqian-a" href="#"><%= data.tags[0] %></a>
               </span>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="answer-people">
               <img class="answer-people-img" src="" alt="">
               <span class="answer-people-span">
-                <a class="answer-people-a" href="#">提问者(插入user)</a>
+                <a class="answer-people-a" href="#"><%= data.personuid %></a>
               </span>
             </div>
           </div>
@@ -49,7 +49,7 @@
             <div class="answer-people2">
               <img class="answer-people-img" src="" alt="">
               <span class="answer-people-span">
-                <a class="answer-people-a" href="#">提问者(插入user)</a>
+                <a class="answer-people-a" href="#">回答者(插入user)</a>
               </span>
             </div>
             <div class = "answer-content">
@@ -136,6 +136,10 @@
   	<script src="../question/dist/quill.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+      var data;
+      if (data) {
+        $("./answer-code").append(data);
+      }
       var quill = new Quill('#editor-container', {
           modules: {
             formula: true,
