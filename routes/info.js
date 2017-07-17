@@ -24,7 +24,7 @@ router.get('/', function(req, res) {
       db.udb.findOne({'uid': req.session.uid}, function(err, data){
           // console.log(data+'```````````');
       res.render('info', {
-        nick: 'name',
+        nick: req.session.uid,
         prestige:100,
         follow:99,
         Collection:99,
