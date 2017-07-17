@@ -1,22 +1,9 @@
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}*/
-
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #33a3dc;
   background-color: #fff;
-}
-
-li {
-  list-style: none;
 }
 
 a, a:hover {
@@ -29,7 +16,7 @@ a, a:hover {
   padding-bottom: 30px;
 }
 
-.main>.title>li.active>a, .main>.title>li.active>a:focus, .main>.title>li.active>a:hover {
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
   color: #fff;
   cursor: default;
   background-color: #33a3dc;
@@ -39,20 +26,6 @@ a, a:hover {
   border-bottom: 1px #4e72b8 solid;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24);
   font-weight: bold;
-  /**/
-  /*position: relative;
-  display: block;
-  padding: 10px 15px;
-  margin-right: 2px;
-  line-height: 1.42857143;
-  border-radius: 4px 4px 0 0;
-  border-bottom-color: transparent;
-  font-size: 14px;
-  height: auto;*/
-}
-
-.main>.title {
-  border-bottom: 1px solid #ddd;
 }
 
 .mt30 {
@@ -63,7 +36,7 @@ a, a:hover {
   margin-bottom: 10px;
 }
 
-.main>.title>li {
+.nav-tabs>li {
   margin-right: 30px;
 }
 
@@ -118,7 +91,7 @@ a, a:hover {
 
 .question-stream .stream_list_item .qu_rank .answered {
   background: #90EE90;
-  color: #666;
+  color: #fff;
 }
 
 .stream_list_item .author {
@@ -182,18 +155,11 @@ a, a:hover {
   color: #333;
 }
 
-.btn-xs, .text-muted>.btn-group-xs>.btn {
+.btn-xs, .btn-group-xs>.btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
-  top: 0px;
-  left: 0px;
-  border: 1px #999 solid;
-}
-
-.text-muted>.btn-group {
-  display: inline-block;
 }
 
 
@@ -305,148 +271,4 @@ p {
 
 .label-success {
   background-color: #4e72b8;
-}
-
-
-/* 特定背景 */
-
-.tag-hover {
-  background-color: #4e72b8;
-  color: #fff;
-  text-decoration: none;
-}
-
-.filter-container {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.filter-container>span {
-  color: #999;
-  font-size: 14px;
-}
-
-.filter-container .tag--inline {
-  padding: 0;
-  font-size: 0;
-}
-
-.inline-block {
-  display: inline-block;
-  padding-left: 5px;
-}
-
-.taglist--inline>li {
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.sx-px {
-  /*border-top: 1px solid #eee;*/
-}
-
-.filter-container .tag_more {
-  display: none;
-}
-
-.paidanswer__expert--item {
-  border-top: 1px solid #eee;
-  padding: 15px 10px;
-  min-height: 90px;
-}
-
-.paidanswer__expert--item .expert-avatar {
-  float: left;
-}
-
-.paidanswer__expert--item .expert-avatar img {
-  width: 64px;
-  height: 64px;
-}
-
-.paidanswer__expert--item .expert-avatar a {
-  border: 0;
-}
-
-.paidanswer__expert--item .expert-info {
-  margin-left: 79px;
-}
-
-a:hover, a:focus {
-  color: #4e72b8;
-  text-decoration: underline;
-}
-
-.paidanswer__expert--item .expert-info .expert-name {
-  display: inline-block;
-  font-size: 16px;
-  color: #333;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.paidanswer__expert--item .expert-info p {
-  margin-bottom: 5px;
-}
-
-.btn {
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-}
-
-.mt5, .mt-5 {
-  margin-top: 5px !important;
-}
-
-.expert-info .btn-sm, .btn-group-sm>.btn {
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-  border: 1px solid transparent;
-}
-
-.expert-info .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-}
-
-.paidanswer__expert--item .expert-info .expert-price {
-  color: #ED1C24;
-}
-
-.paidanswer__expert--item .expert-info .expert-job {
-  color: #999;
-  font-size: 13px;
-}
-
-.paidanswer__expert--item .expert-info .expert-desc {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.taglist--inline, .taglist--block {
-  list-style: none;
-  padding: 0;
-  /*font-size: 0;*/
-}
-
-.mb0, .mb-0 {
-  margin-bottom: 0px !important;
-}
-
-.height-content {
-  height: auto;
-}
-
-@media (max-width: 640px) {
-  .row .main li {
-    margin-right: 0;
-  }
-  .row {
-    margin-right: 0px;
-    margin-left: 0px;
-  }
 }
