@@ -51,7 +51,7 @@ id　　　| id | object | 是 |        |
 问题的内容|questioncontent|String| 是　|   |   
 提问者的id|personid| String| 是　|    | 
 关注该问题的人数与id|focusperson|Array| 　| [ ]  |讲提问者与回答者与评论者加入其中,人数通过长度获取
-每个回答的id|answerid|Array|  | [ ]|
+每个回答的id|answeruid|Array|  | [ ]|
 问题的状态（暂无回答、有回答但未解决、问题已解决）|state|String| 是　|noanswer| 用三个字符串表示，noanswer,answerforming，resolved
 问题所属的标签|tag|Array|   | [] | 存放标签的id
 问题的浏览次数|questionview|Number|    | 0 | 
