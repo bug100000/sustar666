@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url = 'mongodb://192.168.1.133:27017/sustar';
+const url = 'mongodb://bug100000:myself@ds161262.mlab.com:61262/sustar';
 mongoose.connect(url);
 
 let db = mongoose.connection;
