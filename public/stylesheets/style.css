@@ -438,7 +438,7 @@ a:hover, a:focus {
 }
 
 .height-content {
-  height: 1000px;
+  height: auto;
 }
 
 @media (max-width: 640px) {
