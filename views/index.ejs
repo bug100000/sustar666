@@ -384,7 +384,7 @@
         <% include ./foot %>
             <script>
                 $(function() {
-                    function get(URL, id) {
+                    function get(URL) {
                         //创建form表单
                         var temp_form = document.createElement("form");
                         temp_form.action = URL;
@@ -397,8 +397,8 @@
                         var opt1 = document.createElement("textarea");
                         // opt.name = "url";
                         // opt.value = URL;
-                        opt.name = "id";
-                        opt.value = id;
+                        // opt.name = "id";
+                        // opt.value = id;
                         temp_form.appendChild(opt);
                         // temp_form.appendChild(opt1);
 
@@ -411,7 +411,7 @@
                         var id = $(this).children().html();
                         // var title = $(this).html();
                         console.log(id);
-                        get("/answer", id);
+                        get("/answer/"+id);
                     });
 
                     $(document).ready(function() {
