@@ -263,12 +263,12 @@
 					// 		return false;
 					// });
 					var socket = io();
-					var uid = <%= uid %>
-					console.log(uid+"000");
+					var uid = "<%= uid %>";
+					console.log(uid);
 					$('.code-btn').click(function() {
 						console.log("hei");
 						var tags = $('#tags span').html().replace('<i class="remove"> × </i>', "");
-						socket.emit('question', $('.question-title').val(), tags, $('.code').html(), uid);
+						socket.emit('question', $('.question-title').val(), tags, $('.code').text(), uid);
 					});
 					socket.on('question', function(){
 						alert("提问成功！");

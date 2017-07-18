@@ -129,48 +129,46 @@
                     <a class="btn btn-default">未解决</a>
                   </div>
                 </div>
-                                <!-- 每一个问题 组成 -->
-                <section class="heightlight stream_list_item">
-                  <div class="qu_rank">
-                    <div class="votes hidden-xs">
-                      <span>0</span>
-                      <small>得票</small>
-                    </div>
-                    <div class="answers answered">
-                      <span>1</span>
-                      <small>回答</small>
-                    </div>
-                    <div class="views hidden-xs">
-                      <span>66</span>
-                      <small>浏览</small>
-                    </div>
-                  </div>
-                  <!--          问题部分 -->
-                  <div class="summary">
-                    <ul class="author list-inline">
-                      <li>
-                        <a href="">舞动说</a>
-                        <span class="split"></span>
-                        <span><a href="">3小时</a>前回答</span>
-                      </li>
-                    </ul>
-                    <h2 class="title"><a href="">为何暴雨辣么帅？在线等 很急</a></h2>
-                    <ul class="taglist-inline">
-                      <li>
-                        <a href="" class="tag tag-sm">vim</a>
-                      </li>
-                      <li>
-                        <a href="" class="tag tag-sm">帅逼联盟</a>
-                      </li>
-                      <li>
-                        <a href="" class="tag tag-sm">javascript</a>
-                      </li>
-                    </ul>
-                  </div>
-                </section>
 
+                <% ans.forEach(function(data){ %>
+                  <!-- 每一个问题 组成 -->
+             <section class="heightlight stream_list_item">
+               <div class="qu_rank">
+                 <div class="votes hidden-xs">
+                   <span><%= data.praise %></span>
+                   <small>得票</small>
+                 </div>
+                 <div class="answers answered">
+                   <span><%= data.answeruid.length %></span>
+                   <small>回答</small>
+                 </div>
+                 <div class="views hidden-xs">
+                   <span><%= data.questionview %></span>
+                   <small>浏览</small>
+                 </div>
+               </div>
+               <!--          问题部分 -->
+               <div class="summary">
+                 <ul class="author list-inline">
+                   <li>
+                     <a href=""><%= data.personuid %></data></a>
+                     <span class="split"></span>
+                     <span><a href="">3小时</a>前回答</span>
+                   </li>
+                 </ul>
+                 <h2 class="title"><a href=""><%= data.title %></a></h2>
+                 <ul class="taglist-inline">
+                   <% for (let i = 0 ; i <  data.tags.length ; i++){ %>
+                   <li>
+                     <a href="" class="tag tag-sm"><%= data.tags[i] %></a>
+                   </li>
+                   <% } %>
+                 </ul>
+               </div>
+             </section>
+           <% }); %>
                 <!-- 第二种问题 -->
-                <section class="stream_list_item">
+                <!-- <section class="stream_list_item">
                   <div class="qu_rank">
                     <div class="votes hidden-xs">
                       <span>0</span>
@@ -184,9 +182,9 @@
                       <span>66</span>
                       <small>浏览</small>
                     </div>
-                  </div>
+                  </div> -->
                   <!--          问题部分 -->
-                  <div class="summary">
+                  <!-- <div class="summary">
                     <ul class="author list-inline">
                       <li>
                         <a href="">舞动说</a>
@@ -207,7 +205,7 @@
                       </li>
                     </ul>
                   </div>
-                </section>
+                </section> -->
               </div>
               <div role="tabpanel" class="tab-pane question-stream" id="threHot">
 

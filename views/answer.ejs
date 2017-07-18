@@ -27,7 +27,7 @@
             </p>
             <h2><span class = "wen">问</span><%= data.title %></h2>
             <div class = "answer-content">
-              <p class="answer-code"></p>
+              <p class="answer-code"><%= data.code %></p>
             </div>
             <div class="answer-biaoqian">
               关键字:<span class="answer-biaoqian-span">
@@ -136,10 +136,11 @@
   	<script src="../question/dist/quill.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-      var data;
-      if (data) {
-        $("./answer-code").append(data);
-      }
+      // var data = "<%= data.code %>";
+      // console.log(data);
+      // if (data) {
+      //   $("./answer-code").append(data);
+      // }
       var quill = new Quill('#editor-container', {
           modules: {
             formula: true,
