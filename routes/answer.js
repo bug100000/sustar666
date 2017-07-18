@@ -11,8 +11,8 @@ router.get('/', function(req, res) {
   } else {
       state = false;
   };
-  qdb.qdb.find({"title": req.query.title}, function(err, data){
-    console.log(data);
+  qdb.qdb.find({"_id": req.query.id}, function(err, data){
+    // console.log(data+"=======================================");
     res.render('answer', {state: state, data: data[0]});
   })
 });
