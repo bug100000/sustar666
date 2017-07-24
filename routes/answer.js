@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var qdb = require('../db/questions.js')
+var adb = require('../db/answers.js')
 
 /* GET home page. */
 router.get('/:id', function(req, res) {
@@ -13,7 +14,14 @@ router.get('/:id', function(req, res) {
       state = false;
   };
   qdb.qdb.find({"_id": id}, function(err, data){
-    res.render('answer', {state: state, data: data[0]});
+    adb.adb.find({"questionid": id}, function(err, answers){
+      if (err) {
+        console.log(err);
+      }else {
+        console.log(answers);
+        res.render('answer', {state: state, data: data[0], answers: answers});
+      }
+    })
   })
 });
 

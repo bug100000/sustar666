@@ -45,19 +45,23 @@
             </div>
           </div>
           <!-- 插入回复 -->
+          <% answers.forEach(function(answer){ %>
+
           <div class = "answer-huifu">
             <div class="answer-people2">
               <img class="answer-people-img" src="" alt="">
               <span class="answer-people-span">
-                <a class="answer-people-a" href="#">回答者(插入user)</a>
+                <a class="answer-people-a" href="#"><%= answer.answerid %></a>
               </span>
             </div>
             <div class = "answer-content">
-              <p>(插入回复内容)</p>
+              <p><%= answer.answer %></p>
             </div>
             <button class="answer-zan-btn" type="button" name="button">点赞</button>
             <button class="answer-caina-btn" type="button" name="button">采纳</button>
           </div>
+          <% }) %>
+
 
           <!-- 文本编辑器 -->
           <div class = "answer-text">
@@ -111,7 +115,7 @@
       					</span>
       					</div>
       					<!-- 发布内容框 -->
-      					<div id="editor-container"></div>
+      					<div class="answer-text-code" id="editor-container"></div>
       					<div class="checkbox">
       						<!-- <label class="label">
       							<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">是否发出悬赏
@@ -119,7 +123,7 @@
       					</div>
       					<div></div>
       					<!-- 发布按钮 -->
-      					<button type="submit" class="answer-btn btn btn-default">发布问题</button>
+      					<button class="answer-btn btn btn-default">提交回答</button>
 
       					</div>
       				</div>
@@ -136,11 +140,31 @@
   	<script src="../question/dist/quill.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-      // var data = "<%= data.code %>";
-      // console.log(data);
-      // if (data) {
-      //   $("./answer-code").append(data);
-      // }
+      function get(URL, code, id) {
+          //创建form表单
+          var temp_form = document.createElement("form");
+          temp_form.action = URL;
+          //如需打开新窗口，form的target属性要设置为'_blank'
+          temp_form.target = "_self";
+          temp_form.method = "get";
+          temp_form.style.display = "none";
+          var opt = document.createElement("textarea");
+          var opt1 = document.createElement("textarea");
+          opt.name = "code";
+          opt.value = code;
+          opt1.name = "questionid";
+          opt1.value = id;
+          temp_form.appendChild(opt);
+          temp_form.appendChild(opt1);
+          document.body.appendChild(temp_form);
+          //提交数据
+          temp_form.submit();
+      };
+      var id = location.pathname.replace('/answer/', '');
+      var id = id.replace('?', '');
+      $('.answer-btn').click(function(){
+        get("/answersuccess", $('.answer-text-code').text(), id)
+      });
       var quill = new Quill('#editor-container', {
           modules: {
             formula: true,
