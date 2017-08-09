@@ -17,6 +17,7 @@ router.get('/', function(req, res) {
   });
 });
 router.post('/register', function(req, res) {
+  console.log(666);
   udb.udb.find({
       "uid": req.body.uid
   }, function(err, data) {
@@ -33,8 +34,9 @@ router.post('/register', function(req, res) {
           res.json(false)
       };
   });
-});
-router.post('/login', function(req, res) {
+})
+.post('/login', function(req, res) {
+  console.log("lianjie");
   udb.udb.find({
       "uid": req.body.uid,
       "password": req.body.password
