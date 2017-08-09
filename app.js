@@ -5,6 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+const bcrypt = require('bcrypt');
+var webpack = require('webpack');
+var WebpackHotMiddleware = require('webpack-hot-middleware');
+var WebpackDevMiddleware = require('webpack-dev-middleware');
+var config = require('./webpack.config.js');
+var compiler = webpack(config);
+const salt = 10;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -22,6 +29,8 @@ var questionsuccess = require('./routes/questionsuccess');
 var toutiao = require('./routes/toutiao');
 var tagQuestion = require('./routes/tagQuestion');
 var answersuccess = require('./routes/answersuccess');
+var test = require('./routes/test');
+var apis = require('./routes/apis.js');
 
 var app = express();
 
@@ -39,6 +48,13 @@ app.use(session({
         maxAge: 1000 * 60 * 30
     }
 }));
+
+// webpack middleware
+app.use(WebpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath,
+  stats: { colors: true }
+}));
+app.use(WebpackHotMiddleware(compiler));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -64,6 +80,8 @@ app.use('/questionsuccess', questionsuccess);
 app.use('/toutiao', toutiao);
 app.use('/tagQuestion', tagQuestion);
 app.use('/answersuccess', answersuccess);
+app.use('/test', test);
+app.use('/apis', apis);
 
 
 // catch 404 and forward to error handler
