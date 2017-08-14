@@ -3,7 +3,8 @@
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -183,18 +184,28 @@
     <div class="container">
         <nav class="nav nav-posi">
             <ul class="nav_list">
-                <li class="nav_item">
+                <li class="nav_item head-nav-move">
                     <a href="/">
                         <span class="glyphicon glyphicon-home"></span> home
                     </a>
                 </li>
-                <li class="nav_item">
+                <li class="nav_item head-nav-move">
                     <a>
                         <span class="split"></span>
                     </a>
                 </li>
-                <li class="nav_item">
-                    <a class='nav_tag' href="">javascript</a>
+                <li class="nav_item head-nav-tags">
+                    <!-- 最多放十个标签 -->
+                    <a class='nav_tag head-tags'>javascript</a>
+                    <a class='nav_tag head-tags'>python</a>
+                    <a class='nav_tag head-tags'>html</a>
+                    <a class='nav_tag head-tags'>C</a>
+                    <a class='nav_tag head-tags'>c++</a>
+                    <a class='nav_tag head-tags'>php</a>
+                    <a class='nav_tag head-tags'>perl</a>
+                    <a class='nav_tag head-tags'>c#</a>
+                    <a class='nav_tag head-tags'>ruby</a>
+                    <a class='nav_tag head-tags'>node.js</a>
                 </li>
                 <li class="nav_item nav_item-more">
                     <a class="tag_item_more" href="/tag">
@@ -213,8 +224,31 @@
     <% include login %>
 </div>
 <script>
-    $(".tiao-question").click(function() {
-      window.location.href = "/question";
+    function get(URL, tag) {
+        //创建form表单
+        var temp_form = document.createElement("form");
+        temp_form.action = URL;
+        //如需打开新窗口，form的target属性要设置为'_blank'
+        temp_form.target = "_self";
+        temp_form.method = "get";
+        temp_form.style.display = "none";
+
+        var opt = document.createElement("textarea");
+        var opt1 = document.createElement("textarea");
+        opt.name = "tag";
+        opt.value = tag;
+        temp_form.appendChild(opt);
+
+        document.body.appendChild(temp_form);
+
+        //提交数据
+        temp_form.submit();
+    };
+    $(".head-tags").click(function () {
+        get("/tagQuestion", $(this).text());
+    })
+    $(".tiao-question").click(function () {
+        window.location.href = "/question";
     })
     var bell = document.getElementById('bell');
     var bellF = document.getElementById('bell-f');
@@ -226,13 +260,13 @@
         $(".login-block").addClass("login_out");
         $(".login-hidden").removeClass("login_out");
     }
-    bell.onmouseover = function() {
+    bell.onmouseover = function () {
         bell.style.display = "block";
     }
-    bell.onmouseout = function() {
+    bell.onmouseout = function () {
         bell.style.display = null;
     }
-    $(".login-button").click(function() {
+    $(".login-button").click(function () {
         $(".login-box").css("display", "block");
     });
 </script>

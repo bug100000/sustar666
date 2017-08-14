@@ -195,6 +195,9 @@ body {
   padding: 10px;
 }
 
+.nav_item-more:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
 .nav_item-more {
   position: absolute;
   top: 0;
@@ -413,4 +416,10 @@ body {
 }
 .login-box{
   display: none;
+}
+.head-nav-tags a{
+  float: left;
+}
+.head-nav-move{
+  transform: translateY(-11px);
 }
