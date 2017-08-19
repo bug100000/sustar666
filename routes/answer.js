@@ -8,6 +8,7 @@ router.get('/:id', function(req, res) {
   var id = req.url.replace("/", "");
   var id = id.replace("?", "");
   var state;
+
   if (req.session.uid != undefined) {
       state = true;
   } else {
@@ -18,7 +19,6 @@ router.get('/:id', function(req, res) {
       if (err) {
         console.log(err);
       }else {
-        console.log(answers);
         res.render('answer', {state: state, data: data[0], answers: answers});
       }
     })

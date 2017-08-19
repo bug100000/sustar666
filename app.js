@@ -31,6 +31,8 @@ var tagQuestion = require('./routes/tagQuestion');
 var answersuccess = require('./routes/answersuccess');
 var test = require('./routes/test');
 var apis = require('./routes/apis.js');
+var test1 = require('./routes/test1');
+
 
 var app = express();
 
@@ -82,6 +84,7 @@ app.use('/tagQuestion', tagQuestion);
 app.use('/answersuccess', answersuccess);
 app.use('/test', test);
 app.use('/apis', apis);
+app.use('/test1', test1);
 
 
 // catch 404 and forward to error handler
