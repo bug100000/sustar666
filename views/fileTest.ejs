@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,19 +14,12 @@
     }
   </style>
 </head>
-
 <body>
-  <div id="test"></div>
-  <form id='editfile' method='post' action='/test1' enctype='multipart/form-data'>
-    <input name="text" type="text" /> 选择图片：
+  <form id='editfile' method='post' action='/fileTestNext' enctype='multipart/form-data'>
+    选择要上传的文件：
     <input name="avatar" id='upfile' type='file' />
     <input type='submit' value='提交' />
   </form>
-  <!-- <form class="" action="/test1" method="post">
-    <input type="file">
-    <button type="submit" name="button">提交</button>
-  </form> -->
-  <script type="text/javascript" src="/js/index.js"></script>
 </body>
 
 </html>

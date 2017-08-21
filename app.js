@@ -29,9 +29,10 @@ var questionsuccess = require('./routes/questionsuccess');
 var toutiao = require('./routes/toutiao');
 var tagQuestion = require('./routes/tagQuestion');
 var answersuccess = require('./routes/answersuccess');
-var test = require('./routes/test');
 var apis = require('./routes/apis.js');
-var test1 = require('./routes/test1');
+var fileTest = require('./routes/fileTest');
+var fileTestNext = require('./routes/fileTestNext');
+var reactTest = require('./routes/reactTest');
 
 
 var app = express();
@@ -82,9 +83,10 @@ app.use('/questionsuccess', questionsuccess);
 app.use('/toutiao', toutiao);
 app.use('/tagQuestion', tagQuestion);
 app.use('/answersuccess', answersuccess);
-app.use('/test', test);
 app.use('/apis', apis);
-app.use('/test1', test1);
+app.use('/fileTest', fileTest);
+app.use('/fileTestNext', fileTestNext);
+app.use('/reactTest', reactTest);
 
 
 // catch 404 and forward to error handler
