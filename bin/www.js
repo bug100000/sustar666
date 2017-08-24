@@ -8,6 +8,7 @@ var url = 'mongodb://bug100000:myself@ds161262.mlab.com:61262/sustar';
 var app = require('../app');
 var debug = require('debug')('demo:server');
 var http = require('http');
+var cp = require('child_process');
 
 /**
  * Get port from environment and store in Express.
@@ -168,3 +169,10 @@ function onListening() {
         'port ' + addr.port;
     debug('Listening on ' + bind);
 }
+
+//未成功
+// process.on('message', function(m){
+//     console.log('Child got message:', m)
+// });
+
+// procrss.send({foo: 'bar'})

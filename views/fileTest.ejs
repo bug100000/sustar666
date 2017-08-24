@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,6 +15,7 @@
     }
   </style>
 </head>
+
 <body>
   <form id='editfile' method='post' action='/fileTestNext' enctype='multipart/form-data'>
     选择要上传的文件：
@@ -21,11 +23,25 @@
     <input type='submit' value='提交' />
   </form>
   <script>
-    var worker = new Worker('worker.js')
-    worker.onmessage = function(e){
-      console.log(e)
-      console.log(e.data)
-    }
+    //下面这段代码如果放在前段页面执行，其将会与ui渲染共用一个线程，由于下面代码计算量非常的大，造成ui无法渲染最后卡死
+    //解决办法是，使用webworkAPI创建一个工作线程用来处理大量计算,在后台运行，使其不影响主线程的ui渲染
+    // var n = 1
+    // search: while (true) {
+    //   n += 1;
+    //   for (var i = 2; i <= Math.sqrt(n); i += 1)
+    //     if (n % i == 0)
+    //       continue search;
+    //   console.log(n)
+    // }
+
+    //创建工作线程（大量计算的代码写在worker.js文件中，worker.js文件放在public文件夹中）：
+    // var worker = new Worker('worker.js')
+
+    //监听工作线程发送过来的数据
+    // worker.onmessage = function (e) {
+    //   console.log(e)
+    //   console.log(e.data)
+    // }
   </script>
 </body>
 
