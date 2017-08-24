@@ -12,8 +12,10 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
+var duankou = Math.round((1+Math.random())*1000)
+console.log(duankou)
 
-var port = normalizePort(process.env.PORT || '5001');
+var port = normalizePort(process.env.PORT || duankou);
 app.set('port', port);
 
 /**
