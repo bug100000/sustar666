@@ -33,7 +33,6 @@ var udb = require('../db/users.js');
 
 
 io.on("connection", function(socket) {
-    console.log("123");
     socket.on('login', function(uid, password) {
         console.log(uid);
         console.log(password);
