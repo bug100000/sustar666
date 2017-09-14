@@ -100,7 +100,7 @@ socket.on('register-success', function() {
 function Post(URL) {
     //创建form表单
     var temp_form = document.createElement("form");
-    temp_form.action = "/zhong";
+    temp_form.action = '/zhong';
     //如需打开新窗口，form的target属性要设置为'_blank'
     temp_form.target = "_self";
     temp_form.method = "post";
