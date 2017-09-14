@@ -3,17 +3,19 @@
 /**
  * Module dependencies.
  */
-var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://bug100000:myself@ds161262.mlab.com:61262/sustar';
+// var MongoClient = require('mongodb').MongoClient;
+// var url = 'mongodb://bug100000:myself@ds161262.mlab.com:61262/sustar';
 var app = require('../app');
 var debug = require('debug')('demo:server');
 var http = require('http');
 var cp = require('child_process');
+var bcrypt = require('bcrypt');
+var salt = 10;
 
 /**
  * Get port from environment and store in Express.
  */
-var duankou = Math.round((1+Math.random())*1000)
+var duankou = Math.round((1 + Math.random()) * 1000)
 console.log(duankou)
 
 var port = normalizePort(process.env.PORT || duankou);
@@ -32,37 +34,50 @@ var udb = require('../db/users.js');
 
 
 
-io.on("connection", function(socket) {
-    socket.on('login', function(uid, password) {
+io.on("connection", function (socket) {
+    socket.on('login', function (uid, password) {
         console.log(uid);
         console.log(password);
-        db.udb.find({
-            "uid": uid,
-            "password": password
-        }, function(err, data) {
-            if (data[0] == null) {
-                socket.emit('login-err')
-            } else {
-                // req.session.uid = uid;
-                socket.emit('login-success')
-            };
+        db.udb.findOne({
+            "uid": uid
+        }, function (err, data) {
+            if(data == null){
+                data = {}
+            }
+            bcrypt.compare(password, data.password, function (err, hash) {
+                if (hash) {
+                    socket.emit('login-success')
+                    // res.redirect('/')
+                } else {
+                    socket.emit('login-err')
+                    // res.redirect('login');
+                }
+            })
+            // if (data[0] == null) {
+            //     socket.emit('login-err')
+            // } else {
+            //     // req.session.uid = uid;
+            //     socket.emit('login-success')
+            // };
         });
     });
-    socket.on('register', function(nick, uid, password) {
+    socket.on('register', function (nick, uid, password) {
         console.log(nick);
         console.log(uid);
         console.log(password);
         db.udb.find({
             "uid": uid
-        }, function(err, data) {
+        }, function (err, data) {
             if (data[0] == null) {
-                var user = new db.udb({
-                    uid: uid,
-                    nick: nick,
-                    password: password
-                });
-                user.save(function(err, data) {
-                    socket.emit('register-success');
+                bcrypt.hash(password, salt, (err, hash)=>{
+                    var user = new db.udb({
+                        uid: uid,
+                        nick: nick,
+                        password: hash
+                    });
+                    user.save(function (err, data) {
+                        socket.emit('register-success');
+                    })
                 })
             } else {
                 // req.session.uid = uid;
@@ -70,11 +85,11 @@ io.on("connection", function(socket) {
             };
         });
     });
-    socket.on('tagDescribe', function(data) {
+    socket.on('tagDescribe', function (data) {
 
         tagdb.tags.findOne({
             tag: data.tag
-        }, function(err, doc) {
+        }, function (err, doc) {
             if (err) console.log(err);
             // console.log(doc);
             io.emit('tagDescribe1', {
@@ -83,22 +98,22 @@ io.on("connection", function(socket) {
             });
         });
     });
-    socket.on('question', function(title, tags, code, uid){
-      console.log(uid);
-      var question = new qdb.qdb({
-        title: title,
-        tags: tags,
-        code: code,
-        personuid: uid
-      })
-      question.save(function(err, data){
-        console.log("save");
-        if (err) {
-          console.log(err);
-        }else {
-          socket.emit('question');
-        }
-      })
+    socket.on('question', function (title, tags, code, uid) {
+        console.log(uid);
+        var question = new qdb.qdb({
+            title: title,
+            tags: tags,
+            code: code,
+            personuid: uid
+        })
+        question.save(function (err, data) {
+            console.log("save");
+            if (err) {
+                console.log(err);
+            } else {
+                socket.emit('question');
+            }
+        })
     });
 });
 /**
